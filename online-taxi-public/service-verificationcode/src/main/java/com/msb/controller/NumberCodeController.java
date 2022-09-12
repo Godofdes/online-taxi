@@ -19,7 +19,7 @@ public class NumberCodeController {
         //生成验证码，即六位随机数
         double mathRandom = (Math.random()*9+1)*(Math.pow(10,size-1));
         int mathInt = (int)mathRandom;
-
+        System.out.println(mathInt);
 //        JSONObject result = new JSONObject();
 //        result.put("code",1);
 //        result.put("message","success");

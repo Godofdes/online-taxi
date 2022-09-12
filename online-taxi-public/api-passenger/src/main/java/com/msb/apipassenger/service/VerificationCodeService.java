@@ -37,10 +37,10 @@ public class VerificationCodeService {
         ResponseResult<NumberCodeResponse> numberCodeResponse = serviceVerificationCodeClient.getNumberCode(6);
 
         int numberCode = numberCodeResponse.getData().getNumberCode();
-
+        System.out.println(numberCode);
         //存入redis
         String key = verificationCodePrefix+passengerPhone;
-        stringRedisTemplate.opsForValue().set(key,numberCode+"",2, TimeUnit.MINUTES);
+        //stringRedisTemplate.opsForValue().set(key,numberCode+"",2, TimeUnit.MINUTES);
 
         //返回值
 //        JSONObject result = new JSONObject();
