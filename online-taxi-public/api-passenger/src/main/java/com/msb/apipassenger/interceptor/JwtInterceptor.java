@@ -4,6 +4,7 @@ import com.auth0.jwt.exceptions.AlgorithmMismatchException;
 import com.auth0.jwt.exceptions.SignatureVerificationException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.msb.internalcommon.dto.ResponseResult;
+import com.msb.internalcommon.dto.TokenResult;
 import com.msb.internalcommon.util.JwtUtils;
 import net.sf.json.JSONObject;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -25,9 +26,11 @@ public class JwtInterceptor implements HandlerInterceptor {
 
 
         String token = request.getHeader("Authorization");
+        System.out.println(token);
+        TokenResult tokenResult = new TokenResult();
 
         try {
-            JwtUtils.parseToken(token);
+            tokenResult = JwtUtils.parseToken(token);
         }catch (SignatureVerificationException e){
             resultString = "token sign error";
             result = false;
@@ -39,11 +42,20 @@ public class JwtInterceptor implements HandlerInterceptor {
             result = false;
         }
 
+        if(tokenResult==null){
+            resultString = "token invalid";
+            result = false;
+        }else {
+            String phone = tokenResult.getPhone();
+            String identity = tokenResult.getIdentity();
+            System.out.println("phone:"+phone+"-"+"identity:"+identity);
+        }
+
         if(!result){
             PrintWriter writer = response.getWriter();
             writer.print(JSONObject.fromObject(ResponseResult.fail(resultString)).toString());
         }
 
-        return false;
+        return result;
     }
 }

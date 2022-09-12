@@ -32,9 +32,11 @@ public class VerificationCodeService {
     //验证码前缀
     private String verificationCodePrefix = "passenger-verification-code-";
 
+    private String tokenPrefix = "token-";
+
     public ResponseResult generatorCode(String passengerPhone){
         //调用验证码服务，获取验证码
-        ResponseResult<NumberCodeResponse> numberCodeResponse = serviceVerificationCodeClient.getNumberCode(6);
+        ResponseResult<NumberCodeResponse> numberCodeResponse = serviceVerificationCodeClient.getNumberCode(5);
 
         int numberCode = numberCodeResponse.getData().getNumberCode();
         System.out.println(numberCode);
@@ -57,6 +59,10 @@ public class VerificationCodeService {
 
     private String generatorKeyByPhone(String passengerPhone){
         return verificationCodePrefix+passengerPhone;
+    }
+
+    private String generatorTokenKey(String phone, String identity){
+        return tokenPrefix + phone + "-" + identity;
     }
 
     /**
@@ -90,6 +96,8 @@ public class VerificationCodeService {
 
         //颁发令牌
         String token = JwtUtils.generatorToken(passengerPhone, IdentityConstant.PASSENGER_IDENTITY);
+
+        String tokenKey = generatorTokenKey(passengerPhone,IdentityConstant.PASSENGER_IDENTITY);
 
         TokenResponse tokenResponse = new TokenResponse();
         tokenResponse.setToken(token);
