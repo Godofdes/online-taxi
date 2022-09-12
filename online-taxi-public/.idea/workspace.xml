@@ -2,9 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f00a73e1-934e-44e2-8e71-e64ae932bec2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/api-passenger/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-passenger/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-passenger/src/main/java/com/msb/apipassenger/remote/ServicePassengerUserClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal-common/src/main/java/com/msb/internalcommon/request/VerificationCodeDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal-common/src/main/java/com/msb/internalcommon/response/TokenResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-passenger-user/src/main/java/com/msb/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-passenger-user/src/main/java/com/msb/dto/PassengerUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-passenger-user/src/main/java/com/msb/mapper/PassengerUserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-passenger-user/src/main/java/com/msb/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-passenger/src/main/java/com/msb/apipassenger/controller/VerificationCodeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-passenger/src/main/java/com/msb/apipassenger/controller/VerificationCodeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-passenger/src/main/java/com/msb/apipassenger/remote/ServiceVerificationCodeClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-passenger/src/main/java/com/msb/apipassenger/remote/ServiceVerificationCodeClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-passenger/src/main/java/com/msb/apipassenger/request/VerificationCodeDTO.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/api-passenger/src/main/java/com/msb/apipassenger/service/VerificationCodeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-passenger/src/main/java/com/msb/apipassenger/service/VerificationCodeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-passenger/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api-passenger/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-passenger/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api-passenger/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-passenger/target/classes/com/msb/apipassenger/controller/VerificationCodeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/api-passenger/target/classes/com/msb/apipassenger/controller/VerificationCodeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-passenger/target/classes/com/msb/apipassenger/request/VerificationCodeDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-passenger/target/classes/com/msb/apipassenger/service/VerificationCodeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/api-passenger/target/classes/com/msb/apipassenger/service/VerificationCodeService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal-common/src/main/java/com/msb/internalcommon/constant/CommonStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/internal-common/src/main/java/com/msb/internalcommon/constant/CommonStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal-common/src/main/java/com/msb/internalcommon/dto/ResponseResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/internal-common/src/main/java/com/msb/internalcommon/dto/ResponseResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal-common/target/classes/com/msb/internalcommon/constant/CommonStatusEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/internal-common/target/classes/com/msb/internalcommon/constant/CommonStatusEnum.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal-common/target/classes/com/msb/internalcommon/dto/ResponseResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/internal-common/target/classes/com/msb/internalcommon/dto/ResponseResult.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-verificationcode/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/service-verificationcode/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,6 +50,9 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -65,6 +85,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ServicePassengerUserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="service-passenger-user" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.msb.ServicePassengerUserApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ServiceVerificationcodeApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="service-verificationcode" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.msb.ServiceVerificationcodeApplication" />
@@ -90,7 +117,9 @@
       <updated>1662735174443</updated>
       <workItem from="1662735179090" duration="13708000" />
       <workItem from="1662868663037" duration="9068000" />
-      <workItem from="1662906553236" duration="1340000" />
+      <workItem from="1662906553236" duration="2350000" />
+      <workItem from="1662917160554" duration="5721000" />
+      <workItem from="1662966726636" duration="5799000" />
     </task>
     <servers />
   </component>
@@ -102,7 +131,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

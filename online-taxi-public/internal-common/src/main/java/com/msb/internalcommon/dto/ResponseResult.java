@@ -23,6 +23,9 @@ public class ResponseResult<T> {
     public static <T> ResponseResult success(T data){
         return new ResponseResult().setCode(CommonStatusEnum.SUCCESS.getCode()).setMessage(CommonStatusEnum.SUCCESS.getValue()).setData(data);
     }
+    public static ResponseResult success(){
+        return new ResponseResult().setCode(CommonStatusEnum.SUCCESS.getCode()).setMessage(CommonStatusEnum.SUCCESS.getValue());
+    }
     /**
      * 统一的失败
      * @return
