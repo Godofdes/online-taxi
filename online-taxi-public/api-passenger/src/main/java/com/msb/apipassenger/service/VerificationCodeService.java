@@ -2,12 +2,14 @@ package com.msb.apipassenger.service;
 
 import com.msb.apipassenger.remote.ServicePassengerUserClient;
 import com.msb.apipassenger.remote.ServiceVerificationCodeClient;
+import com.msb.internalcommon.constant.IdentityConstant;
 import com.msb.internalcommon.request.VerificationCodeDTO;
 import com.msb.internalcommon.constant.CommonStatusEnum;
 import com.msb.internalcommon.dto.ResponseResult;
 import com.msb.internalcommon.response.NumberCodeResponse;
 import com.msb.internalcommon.response.TokenResponse;
 
+import com.msb.internalcommon.util.JwtUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -87,9 +89,10 @@ public class VerificationCodeService {
         servicePassengerUserClient.loginOrRegister(verificationCodeDTO);
 
         //颁发令牌
+        String token = JwtUtils.generatorToken(passengerPhone, IdentityConstant.PASSENGER_IDENTITY);
 
         TokenResponse tokenResponse = new TokenResponse();
-        tokenResponse.setToken("token string");
+        tokenResponse.setToken(token);
         return ResponseResult.success(tokenResponse);
     }
 
