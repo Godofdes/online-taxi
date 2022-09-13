@@ -18,12 +18,7 @@ public class TokenController {
     public ResponseResult refreshToken(@RequestBody TokenResponse tokenResponse){
         String refreshTokenSrc = tokenResponse.getRefreshToken();
 
-
         return tokenService.refreshToken(refreshTokenSrc);
     }
-    @PostMapping("/testInter")
-    public String test1(){
-        System.out.println("yessssss");
-        return "111";
-    }
+
 }
