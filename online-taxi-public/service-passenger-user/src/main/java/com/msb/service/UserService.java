@@ -1,5 +1,6 @@
 package com.msb.service;
 
+import com.msb.internalcommon.constant.CommonStatusEnum;
 import com.msb.internalcommon.dto.PassengerUser;
 import com.msb.internalcommon.dto.ResponseResult;
 import com.msb.internalcommon.request.VerificationCodeDTO;
@@ -42,5 +43,17 @@ public class UserService {
         //如果不存在，插入用户信息
 
         return ResponseResult.success();
+    }
+
+    public ResponseResult getUser(String passengerPhone) {
+        Map<String,Object> map = new HashMap<>();
+        map.put("passenger_phone",passengerPhone);
+        List<PassengerUser> passengerUsers = passengerUserMapper.selectByMap(map);
+        if(passengerUsers.size()==0){
+            return ResponseResult.fail(CommonStatusEnum.USER_NOT_EXIST.getCode(),CommonStatusEnum.USER_NOT_EXIST.getValue());
+        }else {
+            PassengerUser passengerUser = passengerUsers.get(0);
+            return ResponseResult.success(passengerUser);
+        }
     }
 }
