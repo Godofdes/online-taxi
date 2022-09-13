@@ -9,6 +9,6 @@ spring:
       discovery:
         server-addr: localhost:8848
   redis:
-    host: 127.0.0.1
+    host: 192.168.1.128
     port: 6379
     database: 0

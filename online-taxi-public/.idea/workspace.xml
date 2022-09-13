@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f00a73e1-934e-44e2-8e71-e64ae932bec2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/api-passenger/src/main/java/com/msb/apipassenger/interceptor/InterceptorConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal-common/src/main/java/com/msb/internalcommon/constant/TokenConstant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal-common/src/main/java/com/msb/internalcommon/util/RedisPrefixUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-passenger/src/main/java/com/msb/apipassenger/interceptor/InterceptorConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-passenger/src/main/java/com/msb/apipassenger/interceptor/InterceptorConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api-passenger/src/main/java/com/msb/apipassenger/interceptor/JwtInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-passenger/src/main/java/com/msb/apipassenger/interceptor/JwtInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-passenger/src/main/java/com/msb/apipassenger/remote/ServiceVerificationCodeClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-passenger/src/main/java/com/msb/apipassenger/remote/ServiceVerificationCodeClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api-passenger/src/main/java/com/msb/apipassenger/service/VerificationCodeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-passenger/src/main/java/com/msb/apipassenger/service/VerificationCodeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-passenger/target/classes/com/msb/apipassenger/remote/ServiceVerificationCodeClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/api-passenger/target/classes/com/msb/apipassenger/remote/ServiceVerificationCodeClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-passenger/target/classes/com/msb/apipassenger/service/VerificationCodeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/api-passenger/target/classes/com/msb/apipassenger/service/VerificationCodeService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-passenger/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api-passenger/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal-common/src/main/java/com/msb/internalcommon/response/TokenResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/internal-common/src/main/java/com/msb/internalcommon/response/TokenResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal-common/src/main/java/com/msb/internalcommon/util/JwtUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/internal-common/src/main/java/com/msb/internalcommon/util/JwtUtils.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -58,7 +59,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ApiPassengerApplication">
+  <component name="RunManager" selected="Spring Boot.ServiceVerificationcodeApplication">
     <configuration name="ApiPassengerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="api-passenger" />
       <extension name="coverage">
@@ -106,7 +107,8 @@
       <workItem from="1662868663037" duration="9068000" />
       <workItem from="1662906553236" duration="2350000" />
       <workItem from="1662917160554" duration="5721000" />
-      <workItem from="1662966726636" duration="21021000" />
+      <workItem from="1662966726636" duration="21038000" />
+      <workItem from="1663028149417" duration="4757000" />
     </task>
     <servers />
   </component>
@@ -133,6 +135,11 @@
           <url>file://$PROJECT_DIR$/api-passenger/src/main/java/com/msb/apipassenger/controller/VerificationCodeController.java</url>
           <line>18</line>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/api-passenger/src/main/java/com/msb/apipassenger/interceptor/JwtInterceptor.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/api-passenger/src/main/java/com/msb/apipassenger/remote/ServiceVerificationCodeClient.java</url>

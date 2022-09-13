@@ -3,10 +3,15 @@ package com.msb.apipassenger.interceptor;
 import com.auth0.jwt.exceptions.AlgorithmMismatchException;
 import com.auth0.jwt.exceptions.SignatureVerificationException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
+import com.msb.internalcommon.constant.TokenConstant;
 import com.msb.internalcommon.dto.ResponseResult;
 import com.msb.internalcommon.dto.TokenResult;
 import com.msb.internalcommon.util.JwtUtils;
+import com.msb.internalcommon.util.RedisPrefixUtils;
 import net.sf.json.JSONObject;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +22,9 @@ import java.security.SignatureException;
 
 public class JwtInterceptor implements HandlerInterceptor {
 
+
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -48,7 +56,17 @@ public class JwtInterceptor implements HandlerInterceptor {
         }else {
             String phone = tokenResult.getPhone();
             String identity = tokenResult.getIdentity();
-            System.out.println("phone:"+phone+"-"+"identity:"+identity);
+            String tokenkey = RedisPrefixUtils.generatorTokenKey(phone,identity, TokenConstant.ACCESS_TOKEN);
+
+            String tokenRedis = stringRedisTemplate.opsForValue().get(tokenkey);
+
+            if(StringUtils.isBlank(tokenRedis)){
+                resultString = "token invalid";
+                result = false;
+            }else if(!(token.trim().equals(tokenRedis.trim()))){
+                resultString = "token invalid";
+                result = false;
+            }
         }
 
         if(!result){
