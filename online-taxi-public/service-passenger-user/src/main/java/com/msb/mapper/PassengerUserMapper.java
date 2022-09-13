@@ -1,7 +1,7 @@
 package com.msb.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.msb.dto.PassengerUser;
+import com.msb.internalcommon.dto.PassengerUser;
 import org.springframework.stereotype.Repository;
 
 @Repository

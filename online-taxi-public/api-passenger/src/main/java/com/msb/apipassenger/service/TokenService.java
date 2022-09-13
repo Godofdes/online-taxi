@@ -41,21 +41,21 @@ public class TokenService {
 
         //生成双token
         String accessToken = JwtUtils.generatorToken(phone, identity, TokenConstant.ACCESS_TOKEN);
-        String refershToken = JwtUtils.generatorToken(phone, identity, TokenConstant.REFRESH_TOKEN);
+        String refreshToken = JwtUtils.generatorToken(phone, identity, TokenConstant.REFRESH_TOKEN);
 
         String accessTokenKey = RedisPrefixUtils.generatorTokenKey(phone, identity, TokenConstant.ACCESS_TOKEN);
 
         //放入redis
 
-        //stringRedisTemplate.opsForValue().set(accessTokenKey,accessToken,30,TimeUnit.DAYS);
-        //stringRedisTemplate.opsForValue().set(refreshTokenKey,refershToken,31, TimeUnit.DAYS);
+        stringRedisTemplate.opsForValue().set(accessTokenKey,accessToken,30,TimeUnit.DAYS);
+        stringRedisTemplate.opsForValue().set(refreshTokenKey,refreshToken,31, TimeUnit.DAYS);
 
-        stringRedisTemplate.opsForValue().set(accessTokenKey,accessToken,10,TimeUnit.SECONDS);
-        stringRedisTemplate.opsForValue().set(refreshTokenKey,refershToken,50, TimeUnit.SECONDS);
+//        stringRedisTemplate.opsForValue().set(accessTokenKey,accessToken,10,TimeUnit.SECONDS);
+//        stringRedisTemplate.opsForValue().set(refreshTokenKey,refershToken,50, TimeUnit.SECONDS);
 
         TokenResponse tokenResponse = new TokenResponse();
         tokenResponse.setAccessToken(accessToken);
-        tokenResponse.setRefreshToken(refershToken);
+        tokenResponse.setRefreshToken(refreshToken);
         return ResponseResult.success(tokenResponse);
     }
 

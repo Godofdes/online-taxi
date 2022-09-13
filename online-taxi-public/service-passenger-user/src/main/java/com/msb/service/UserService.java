@@ -1,6 +1,6 @@
 package com.msb.service;
 
-import com.msb.dto.PassengerUser;
+import com.msb.internalcommon.dto.PassengerUser;
 import com.msb.internalcommon.dto.ResponseResult;
 import com.msb.internalcommon.request.VerificationCodeDTO;
 import com.msb.mapper.PassengerUserMapper;
