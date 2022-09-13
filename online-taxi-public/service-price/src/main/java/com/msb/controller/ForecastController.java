@@ -4,9 +4,7 @@ import com.msb.internalcommon.dto.ResponseResult;
 import com.msb.internalcommon.request.ForecastPriceDTO;
 import com.msb.service.ForecastPriceService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ForecastController {
@@ -14,7 +12,7 @@ public class ForecastController {
     @Autowired
     private ForecastPriceService forecastPriceService;
 
-    @PostMapping("/forecast-price")
+    @GetMapping("/forecast-price")
     public ResponseResult forecastPrice(@RequestBody ForecastPriceDTO forecastPriceDTO){
         String depLongitude = forecastPriceDTO.getDepLongitude();
         String depLatitude = forecastPriceDTO.getDepLatitude();
