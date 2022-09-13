@@ -2,17 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f00a73e1-934e-44e2-8e71-e64ae932bec2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/api-passenger/src/main/java/com/msb/apipassenger/controller/ForecastPriceController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api-passenger/src/main/java/com/msb/apipassenger/service/ForecastPriceService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal-common/src/main/java/com/msb/internalcommon/request/ForecastPriceDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal-common/src/main/java/com/msb/internalcommon/response/ForecastPriceResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-price/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-passenger/src/main/java/com/msb/apipassenger/interceptor/InterceptorConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-passenger/src/main/java/com/msb/apipassenger/interceptor/InterceptorConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-passenger/target/classes/com/msb/apipassenger/controller/TestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/api-passenger/target/classes/com/msb/apipassenger/controller/TestController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-passenger/target/classes/com/msb/apipassenger/controller/TokenController.class" beforeDir="false" afterPath="$PROJECT_DIR$/api-passenger/target/classes/com/msb/apipassenger/controller/TokenController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-passenger/target/classes/com/msb/apipassenger/interceptor/InterceptorConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/api-passenger/target/classes/com/msb/apipassenger/interceptor/InterceptorConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-passenger/target/classes/com/msb/apipassenger/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/api-passenger/target/classes/com/msb/apipassenger/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-price/src/main/java/com/msb/ServicePriceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-price/src/main/java/com/msb/controller/ForecastController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-price/src/main/java/com/msb/service/ForecastPriceService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-price/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +58,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ApiPassengerApplication">
+  <component name="RunManager" selected="Spring Boot.ServicePriceApplication">
     <configuration name="JwtUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.msb.internalcommon.util.JwtUtils" />
       <module name="internal-common" />
@@ -99,6 +92,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ServicePriceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="service-price" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.msb.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.msb.ServicePriceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ServiceVerificationcodeApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="service-verificationcode" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.msb.ServiceVerificationcodeApplication" />
@@ -108,6 +114,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.ServicePriceApplication" />
         <item itemvalue="Spring Boot.ApiPassengerApplication" />
         <item itemvalue="Application.JwtUtils" />
       </list>
@@ -128,7 +135,7 @@
       <workItem from="1662906553236" duration="2350000" />
       <workItem from="1662917160554" duration="5721000" />
       <workItem from="1662966726636" duration="21038000" />
-      <workItem from="1663028149417" duration="28261000" />
+      <workItem from="1663028149417" duration="28992000" />
     </task>
     <servers />
   </component>
