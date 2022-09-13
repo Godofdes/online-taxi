@@ -18,6 +18,7 @@
         <module>service-verificationcode</module>
         <module>internal-common</module>
         <module>service-price</module>
+        <module>service-map</module>
     </modules>
     <packaging>pom</packaging>
     <properties>
