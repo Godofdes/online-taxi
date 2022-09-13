@@ -17,7 +17,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
-import java.security.SignatureException;
+
 
 
 public class JwtInterceptor implements HandlerInterceptor {
@@ -35,23 +35,10 @@ public class JwtInterceptor implements HandlerInterceptor {
 
         String token = request.getHeader("Authorization");
         System.out.println(token);
-        TokenResult tokenResult = new TokenResult();
-
-        try {
-            tokenResult = JwtUtils.parseToken(token);
-        }catch (SignatureVerificationException e){
-            resultString = "token sign error";
-            result = false;
-        }catch (TokenExpiredException e){
-            resultString = "token time out";
-            result = false;
-        }catch (AlgorithmMismatchException e){
-            resultString = "token AlgorithmMismatchException";
-            result = false;
-        }
+        TokenResult tokenResult = JwtUtils.checkToken(token);
 
         if(tokenResult==null){
-            resultString = "token invalid";
+            resultString = "interceptor token null";
             result = false;
         }else {
             String phone = tokenResult.getPhone();
@@ -60,11 +47,8 @@ public class JwtInterceptor implements HandlerInterceptor {
 
             String tokenRedis = stringRedisTemplate.opsForValue().get(tokenkey);
 
-            if(StringUtils.isBlank(tokenRedis)){
-                resultString = "token invalid";
-                result = false;
-            }else if(!(token.trim().equals(tokenRedis.trim()))){
-                resultString = "token invalid";
+            if(StringUtils.isBlank(tokenRedis)||!(token.trim().equals(tokenRedis.trim()))){
+                resultString = "tokenRedis is blank or not equals to token";
                 result = false;
             }
         }

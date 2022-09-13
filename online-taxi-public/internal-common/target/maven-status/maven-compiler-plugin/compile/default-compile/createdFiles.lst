@@ -1,0 +1,10 @@
+com\msb\internalcommon\constant\IdentityConstant.class
+com\msb\internalcommon\dto\ResponseResult.class
+com\msb\internalcommon\response\TokenResponse.class
+com\msb\internalcommon\util\RedisPrefixUtils.class
+com\msb\internalcommon\constant\CommonStatusEnum.class
+com\msb\internalcommon\request\VerificationCodeDTO.class
+com\msb\internalcommon\constant\TokenConstant.class
+com\msb\internalcommon\util\JwtUtils.class
+com\msb\internalcommon\dto\TokenResult.class
+com\msb\internalcommon\response\NumberCodeResponse.class

@@ -44,7 +44,7 @@ public class VerificationCodeService {
         System.out.println(numberCode);
         //存入redis
         String key = RedisPrefixUtils.generatorKeyByPhone(passengerPhone);
-        stringRedisTemplate.opsForValue().set(key,numberCode+"",2, TimeUnit.MINUTES);
+        stringRedisTemplate.opsForValue().set(key,numberCode+"",2, TimeUnit.DAYS);
 
         //返回值
 //        JSONObject result = new JSONObject();
@@ -101,10 +101,10 @@ public class VerificationCodeService {
         String refreshToken = JwtUtils.generatorToken(passengerPhone, IdentityConstant.PASSENGER_IDENTITY, TokenConstant.REFRESH_TOKEN);
 
         String accessTokenKey = RedisPrefixUtils.generatorTokenKey(passengerPhone,IdentityConstant.PASSENGER_IDENTITY,TokenConstant.ACCESS_TOKEN);
-        stringRedisTemplate.opsForValue().set(accessTokenKey,accessToken,30,TimeUnit.DAYS);
+        stringRedisTemplate.opsForValue().set(accessTokenKey,accessToken,10,TimeUnit.SECONDS);
 
         String refreshTokenKey = RedisPrefixUtils.generatorTokenKey(passengerPhone,IdentityConstant.PASSENGER_IDENTITY,TokenConstant.REFRESH_TOKEN);
-        stringRedisTemplate.opsForValue().set(refreshTokenKey,refreshToken,31,TimeUnit.DAYS);
+        stringRedisTemplate.opsForValue().set(refreshTokenKey,refreshToken,50,TimeUnit.SECONDS);
 
 
         TokenResponse tokenResponse = new TokenResponse();

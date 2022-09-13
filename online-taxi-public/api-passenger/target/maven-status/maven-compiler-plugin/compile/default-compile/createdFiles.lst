@@ -1,0 +1,10 @@
+com\msb\apipassenger\remote\ServicePassengerUserClient.class
+com\msb\apipassenger\ApiPassengerApplication.class
+com\msb\apipassenger\controller\VerificationCodeController.class
+com\msb\apipassenger\remote\ServiceVerificationCodeClient.class
+com\msb\apipassenger\service\TokenService.class
+com\msb\apipassenger\controller\TestController.class
+com\msb\apipassenger\interceptor\JwtInterceptor.class
+com\msb\apipassenger\service\VerificationCodeService.class
+com\msb\apipassenger\controller\TokenController.class
+com\msb\apipassenger\interceptor\InterceptorConfig.class
