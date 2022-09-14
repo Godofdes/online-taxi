@@ -6,6 +6,7 @@ import com.msb.internalcommon.dto.ResponseResult;
 import com.msb.internalcommon.request.ForecastPriceDTO;
 import com.msb.internalcommon.response.DirectionResponse;
 import com.msb.internalcommon.response.ForecastPriceResponse;
+import com.msb.internalcommon.util.BigDecimalUtils;
 import com.msb.mapper.PriceRuleMapper;
 import com.msb.remote.ServiceMapClient;
 import lombok.extern.slf4j.Slf4j;
@@ -72,44 +73,40 @@ public class ForecastPriceService {
     }
 
     private Double getPrice(Integer distance, Integer duration, PriceRule priceRule){
-        BigDecimal price = new BigDecimal(0);
+        double price = 0.0;
 
         //起步价
         Double startFare = priceRule.getStartFare();
-        BigDecimal startFareDecimal = new BigDecimal(startFare);
-        price = price.add(startFareDecimal);
+        price = BigDecimalUtils.add(price,startFare);
 
         //里程费
         //总里程
-        BigDecimal distanceDecimal = new BigDecimal(distance);
-        BigDecimal distanceMileDecimal = distanceDecimal.divide(new BigDecimal(1000), 2, BigDecimal.ROUND_HALF_UP);
+        double distanceMile = BigDecimalUtils.divide((double)distance, 1000.0);
+
         //起步里程
         Integer startMile = priceRule.getStartMile();
-        BigDecimal startMileDecimal = new BigDecimal(startMile);
+
         //相减
-        double distanceSubtract = distanceMileDecimal.subtract(startMileDecimal).doubleValue();
-        //是否小于0
-        Double mile = distanceSubtract<0?0:distanceSubtract;
+        double distanceSubtract = BigDecimalUtils.subtractBig(distanceMile,(double)startMile);
+
 
         //里程数*里程单价=里程费用
-        BigDecimal mileDecimal = new BigDecimal(mile);
-        Double unitPricePerMile = priceRule.getUnitPricePerMile();
-        BigDecimal unitPricePerMileDecimal = new BigDecimal(unitPricePerMile);
-        BigDecimal mileFare = mileDecimal.multiply(unitPricePerMileDecimal).setScale(2,BigDecimal.ROUND_HALF_UP);
-        price = price.add(mileFare);
+
+        double unitPricePerMile = priceRule.getUnitPricePerMile();
+        double mileFare = BigDecimalUtils.multiply(distanceSubtract,unitPricePerMile);
+
+        price = BigDecimalUtils.add(price,mileFare);
 
         //时长费
         //总时长，分钟
-        BigDecimal time = new BigDecimal(duration);
-        BigDecimal timeMinuteDecimal = time.divide(new BigDecimal(60), 2, BigDecimal.ROUND_HALF_UP);
+        double timeMinute = BigDecimalUtils.divide((double)duration,60.0);
         //时长单价
-        Double unitPricePerMinute = priceRule.getUnitPricePerMinute();
-        BigDecimal unitPricePerMinuteDecimal = new BigDecimal(unitPricePerMinute);
+        double unitPricePerMinute = priceRule.getUnitPricePerMinute();
         //总时长*时长单价=时长费
-        BigDecimal timeFare = timeMinuteDecimal.multiply(unitPricePerMileDecimal);
-        price = price.add(timeFare);
+        double timeFare = BigDecimalUtils.multiply(timeMinute,unitPricePerMile);
+        price = BigDecimalUtils.add(price,timeFare);
 
-        return price.doubleValue();
+        return price;
 
     }
 
