@@ -1,13 +1,19 @@
 package com.msb.apipassenger.service;
 
+import com.msb.apipassenger.remote.ServicePriceClient;
 import com.msb.internalcommon.dto.ResponseResult;
+import com.msb.internalcommon.request.ForecastPriceDTO;
 import com.msb.internalcommon.response.ForecastPriceResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
 public class ForecastPriceService {
+
+    @Autowired
+    private ServicePriceClient servicePriceClient;
 
     /**
      * 根据出发地和目的地经纬度，计算预估价格
@@ -24,9 +30,17 @@ public class ForecastPriceService {
 
         log.info("service "+"调用计价服务，计算价格");
 
-        ForecastPriceResponse forecastPriceResponse = new ForecastPriceResponse();
-        forecastPriceResponse.setPrice(12.34);
+        ForecastPriceDTO forecastPriceDTO = new ForecastPriceDTO();
+        forecastPriceDTO.setDepLongitude(depLongitude);
+        forecastPriceDTO.setDepLatitude(depLatitude);
+        forecastPriceDTO.setDestLongitude(destLongitude);
+        forecastPriceDTO.setDestLatitude(destLatitude);
+        ResponseResult<ForecastPriceResponse> forecastPriceResult = servicePriceClient.forecastPrice(forecastPriceDTO);
+        double price = forecastPriceResult.getData().getPrice();
 
-        return ResponseResult.success();
+        ForecastPriceResponse forecastPriceResponse = new ForecastPriceResponse();
+        forecastPriceResponse.setPrice(price);
+
+        return ResponseResult.success(forecastPriceResponse);
     }
 }
