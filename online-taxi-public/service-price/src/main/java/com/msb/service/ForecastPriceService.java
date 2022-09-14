@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -64,10 +65,52 @@ public class ForecastPriceService {
         }
         PriceRule priceRule = priceRules.get(0);
 
-
-        forecastPriceResponse.setPrice(1234);
+        Double price = getPrice(distance, duration, priceRule);
+        forecastPriceResponse.setPrice(price);
 
         return ResponseResult.success(forecastPriceResponse);
+    }
+
+    private Double getPrice(Integer distance, Integer duration, PriceRule priceRule){
+        BigDecimal price = new BigDecimal(0);
+
+        //起步价
+        Double startFare = priceRule.getStartFare();
+        BigDecimal startFareDecimal = new BigDecimal(startFare);
+        price = price.add(startFareDecimal);
+
+        //里程费
+        //总里程
+        BigDecimal distanceDecimal = new BigDecimal(distance);
+        BigDecimal distanceMileDecimal = distanceDecimal.divide(new BigDecimal(1000), 2, BigDecimal.ROUND_HALF_UP);
+        //起步里程
+        Integer startMile = priceRule.getStartMile();
+        BigDecimal startMileDecimal = new BigDecimal(startMile);
+        //相减
+        double distanceSubtract = distanceMileDecimal.subtract(startMileDecimal).doubleValue();
+        //是否小于0
+        Double mile = distanceSubtract<0?0:distanceSubtract;
+
+        //里程数*里程单价=里程费用
+        BigDecimal mileDecimal = new BigDecimal(mile);
+        Double unitPricePerMile = priceRule.getUnitPricePerMile();
+        BigDecimal unitPricePerMileDecimal = new BigDecimal(unitPricePerMile);
+        BigDecimal mileFare = mileDecimal.multiply(unitPricePerMileDecimal).setScale(2,BigDecimal.ROUND_HALF_UP);
+        price = price.add(mileFare);
+
+        //时长费
+        //总时长，分钟
+        BigDecimal time = new BigDecimal(duration);
+        BigDecimal timeMinuteDecimal = time.divide(new BigDecimal(60), 2, BigDecimal.ROUND_HALF_UP);
+        //时长单价
+        Double unitPricePerMinute = priceRule.getUnitPricePerMinute();
+        BigDecimal unitPricePerMinuteDecimal = new BigDecimal(unitPricePerMinute);
+        //总时长*时长单价=时长费
+        BigDecimal timeFare = timeMinuteDecimal.multiply(unitPricePerMileDecimal);
+        price = price.add(timeFare);
+
+        return price.doubleValue();
+
     }
 
 }
